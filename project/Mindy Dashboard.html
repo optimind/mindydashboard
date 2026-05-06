@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mindy — Dashboard</title>
+<link rel="stylesheet" href="assets/colors_and_type.css">
+<style>
+  html, body { height: 100%; }
+  body {
+    margin: 0; background: #F4F7FC;
+    font-family: Nunito, sans-serif; color: #0A2E6B;
+    overflow: hidden;
+  }
+  #root { display: flex; height: 100vh; }
+  *::-webkit-scrollbar { width: 10px; height: 10px; }
+  *::-webkit-scrollbar-thumb { background: #D9E4F5; border-radius: 999px; border: 2px solid transparent; background-clip: content-box; }
+  *::-webkit-scrollbar-thumb:hover { background: #A8B3C7; background-clip: content-box; border: 2px solid transparent; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel" src="src/Primitives.jsx"></script>
+<script type="text/babel" src="src/Sidebar.jsx"></script>
+<script type="text/babel" src="src/TopBar.jsx"></script>
+<script type="text/babel" src="src/Dashboard.jsx"></script>
+
+<script type="text/babel">
+const { useState } = React;
+
+function App() {
+  const [route, setRoute] = useState('dashboard');
+  const [collapsed, setCollapsed] = useState(false);
+  const user = { name: 'Wendy Ang' };
+
+  const titles = {
+    dashboard: { t: 'Dashboard',     s: 'Your chatbot, at a glance' },
+    chat:      { t: 'Chat',          s: 'Live conversations' },
+    products:  { t: 'Products',      s: 'Catalogue Mindy can answer about' },
+    inquiries: { t: 'Inquiries',     s: 'All conversations and intents' },
+    integrations: { t: 'Facebook Connect', s: 'Manage page & messenger integration' },
+    security:  { t: 'Change Password', s: 'Account security' },
+    settings:  { t: 'Settings',      s: 'Workspace preferences' },
+  };
+  const cur = titles[route] || titles.dashboard;
+
+  return (
+    <>
+      <Sidebar current={route} onNav={setRoute} collapsed={collapsed} onToggle={() => setCollapsed(c => !c)} />
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+        <TopBar title={cur.t} subtitle={cur.s} user={user} />
+        {route === 'dashboard' ? (
+          <DashboardView/>
+        ) : (
+          <div style={{
+            flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
+            flexDirection: 'column', gap: 12, color: '#4B5C82', padding: 40,
+          }}>
+            <img src="assets/mindy-avatar.png" width={120} style={{ borderRadius: 999, opacity: 0.85 }}/>
+            <div style={{ font: '800 22px/1.2 Nunito', color: '#0A2E6B' }}>{cur.t}</div>
+            <div style={{ font: '400 14px/1.4 Nunito' }}>This view is in the kit — not wired up in this demo.</div>
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

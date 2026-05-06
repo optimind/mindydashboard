@@ -1,0 +1,342 @@
+/* ============================================================
+   Mindy Design System — foundations
+   Colors, type, spacing, radii, shadows, and semantic helpers
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ---------- BRAND COLORS (sampled from logo) ---------- */
+  --color-navy-900: #05173D;
+  --color-navy-800: #0A2E6B;  /* primary brand */
+  --color-navy-700: #143A82;
+  --color-navy-600: #2A4F99;
+  --color-navy-500: #4A6AB0;
+  --color-navy-400: #6B8ED6;  /* mindy body — periwinkle */
+  --color-navy-300: #9FB5E3;
+  --color-navy-200: #D9E4F5;
+  --color-navy-100: #E8F0FB;  /* cloud — page bg */
+  --color-navy-50:  #F4F7FC;
+
+  --color-teal-900: #004A47;
+  --color-teal-800: #00756F;
+  --color-teal-700: #009891;
+  --color-teal-600: #00B5AE;  /* primary accent — friendly green */
+  --color-teal-500: #22C9C2;
+  --color-teal-400: #5BD9D3;
+  --color-teal-200: #B8ECE9;
+  --color-teal-100: #E0F7F5;
+
+  --color-coral-700: #C94E3F;
+  --color-coral-600: #F27262;  /* coral accent */
+  --color-coral-500: #FE8072;
+  --color-coral-200: #FCD5CE;
+  --color-coral-100: #FFEEEB;
+
+  --color-sun-700:  #C98A2E;
+  --color-sun-600:  #F5B44F;   /* sun / yellow accent */
+  --color-sun-500:  #F9C778;
+  --color-sun-200:  #FCE5B8;
+  --color-sun-100:  #FFF6E3;
+
+  --color-white:    #FFFFFF;
+  --color-black:    #05173D;
+
+  /* ---------- SEMANTIC COLORS ---------- */
+  --bg-page:       var(--color-navy-100);  /* cloud */
+  --bg-surface:    var(--color-white);
+  --bg-surface-2:  var(--color-navy-50);
+  --bg-inverse:    var(--color-navy-800);
+  --bg-scrim:      rgba(10, 46, 107, 0.32);
+
+  --fg-1:          var(--color-navy-800);  /* primary text */
+  --fg-2:          #4B5C82;                /* secondary text */
+  --fg-3:          #7A89A8;                /* tertiary / captions */
+  --fg-muted:      #A8B3C7;
+  --fg-on-dark:    #FFFFFF;
+  --fg-on-teal:    #FFFFFF;
+
+  --border-subtle: #E2EAF4;
+  --border-default:#D9E4F5;
+  --border-strong: var(--color-navy-800);
+  --border-focus:  var(--color-teal-600);
+
+  --success:       var(--color-teal-600);
+  --success-bg:    var(--color-teal-100);
+  --warning:       var(--color-sun-600);
+  --warning-bg:    var(--color-sun-100);
+  --danger:        var(--color-coral-600);
+  --danger-bg:     var(--color-coral-100);
+  --info:          var(--color-navy-800);
+  --info-bg:       var(--color-navy-100);
+
+  /* ---------- TYPE ---------- */
+  --font-sans: 'Nunito', ui-rounded, -apple-system, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-display: var(--font-sans);
+
+  --fs-display: 40px;
+  --fs-h1: 32px;
+  --fs-h2: 24px;
+  --fs-h3: 20px;
+  --fs-body: 16px;
+  --fs-sm: 14px;
+  --fs-xs: 12px;
+
+  --lh-tight: 1.2;
+  --lh-snug: 1.35;
+  --lh-body: 1.5;
+
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 800;
+
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wordmark: 0.02em; /* Nunito Bold nudged wider to match the hand-drawn logo */
+  --tracking-wide: 0.08em;
+
+  /* ---------- SPACING (4px base) ---------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+
+  /* ---------- RADII ---------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+
+  /* ---------- SHADOWS ---------- */
+  --shadow-1: 0 1px 2px rgba(10, 46, 107, 0.06);
+  --shadow-2: 0 4px 12px rgba(10, 46, 107, 0.08);
+  --shadow-3: 0 12px 32px rgba(10, 46, 107, 0.12);
+  --shadow-4: 0 24px 64px rgba(10, 46, 107, 0.18);
+  --shadow-focus: 0 0 0 2px var(--color-white), 0 0 0 4px var(--color-teal-600);
+
+  /* ---------- MOTION ---------- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 150ms;
+  --dur-std: 240ms;
+  --dur-narrative: 400ms;
+
+  /* ---------- LAYOUT ---------- */
+  --nav-width: 240px;
+  --topbar-height: 64px;
+  --content-max: 1280px;
+}
+
+/* ============================================================
+   SEMANTIC TYPE CLASSES
+   ============================================================ */
+
+html, body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.t-display {
+  font-size: var(--fs-display);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+}
+.t-h1 {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+}
+.t-h2 {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+.t-h3 {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+.t-body {
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+}
+.t-body-strong {
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+}
+.t-caption {
+  font-size: var(--fs-sm);
+  color: var(--fg-2);
+  line-height: var(--lh-body);
+}
+.t-micro {
+  font-size: var(--fs-xs);
+  color: var(--fg-3);
+  line-height: 1.4;
+}
+.t-label {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--fg-2);
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+
+.card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-1);
+  padding: var(--sp-6);
+  transition: box-shadow var(--dur-std) var(--ease-out),
+              transform var(--dur-std) var(--ease-out);
+}
+.card:hover {
+  box-shadow: var(--shadow-2);
+  transform: translateY(-1px);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  height: 40px;
+  padding: 0 var(--sp-4);
+  border-radius: var(--radius-full);
+  border: 0;
+  font: var(--fw-bold) var(--fs-sm)/1 var(--font-sans);
+  cursor: pointer;
+  transition: background var(--dur-micro) var(--ease-out),
+              transform var(--dur-micro) var(--ease-out),
+              box-shadow var(--dur-micro) var(--ease-out);
+  white-space: nowrap;
+}
+.btn:active { transform: scale(0.98); }
+.btn:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+
+.btn-primary {
+  background: var(--color-navy-800);
+  color: var(--fg-on-dark);
+}
+.btn-primary:hover { background: var(--color-navy-900); }
+
+.btn-accent {
+  background: var(--color-teal-600);
+  color: var(--fg-on-teal);
+}
+.btn-accent:hover { background: var(--color-teal-700); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-navy-800);
+}
+.btn-ghost:hover { background: var(--color-navy-200); }
+
+.btn-danger {
+  background: var(--color-coral-600);
+  color: var(--fg-on-dark);
+}
+.btn-danger:hover { background: var(--color-coral-700); }
+
+.input {
+  height: 40px;
+  padding: 0 var(--sp-3);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  font: var(--fw-regular) var(--fs-body)/1 var(--font-sans);
+  color: var(--fg-1);
+  transition: border-color var(--dur-micro) var(--ease-out),
+              box-shadow var(--dur-micro) var(--ease-out);
+  box-shadow: inset 0 1px 0 rgba(10,46,107,0.03);
+}
+.input:focus {
+  outline: none;
+  border-color: var(--color-teal-600);
+  box-shadow: 0 0 0 3px var(--color-teal-100);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  height: 24px;
+  padding: 0 var(--sp-2);
+  border-radius: var(--radius-sm);
+  font: var(--fw-semibold) var(--fs-xs)/1 var(--font-sans);
+}
+.chip-success { background: var(--success-bg); color: var(--color-teal-800); }
+.chip-warning { background: var(--warning-bg); color: var(--color-sun-700); }
+.chip-danger  { background: var(--danger-bg);  color: var(--color-coral-700); }
+.chip-info    { background: var(--info-bg);    color: var(--color-navy-800); }
+
+/* Bob animation for avatars */
+@keyframes mindy-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-2px); }
+}
+.mindy-bob { animation: mindy-bob 3s var(--ease-in-out) infinite; }
+
+/* Typing dots */
+@keyframes typing-dot {
+  0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-2px); }
+}
+
+/* ============================================================
+   WORDMARK — "Mindy" lockup
+   The logo wordmark is NOT a real font — it's a rounded,
+   monoline, soft-terminal custom letterform. Nunito Bold is
+   the closest standard typeface, nudged with +0.02em tracking
+   and a teal-accented "i" dot to reproduce the feel.
+   ============================================================ */
+.wordmark {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold); /* 700 */
+  letter-spacing: var(--tracking-wordmark);
+  color: var(--color-navy-800);
+  line-height: 1;
+}
+.wordmark .dot-i {
+  /* Reserved hook for SVG replacement of the "i" dot in teal */
+  color: var(--color-teal-600);
+}
+.wordmark-tag {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-teal-600);
+  font-size: 11px;
+}
