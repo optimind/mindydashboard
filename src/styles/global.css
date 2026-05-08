@@ -1,0 +1,22 @@
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: #F4F7FC;
+  font-family: Nunito, sans-serif;
+  color: #0A2E6B;
+  overflow: hidden;
+}
+#root { display: flex; height: 100vh; }
+
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb {
+  background: #D9E4F5;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: #A8B3C7;
+  background-clip: content-box;
+  border: 2px solid transparent;
+}
