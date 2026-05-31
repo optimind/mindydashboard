@@ -91,7 +91,8 @@ export default function SecurityView() {
   }
 
   return (
-    <div style={{ flex: 1, overflow: 'auto', padding: 28, background: '#F4F7FC', display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <div style={{ flex: 1, overflow: 'auto', background: '#F4F7FC', minHeight: 0 }}>
+    <div style={{ padding: 28, display: 'flex', flexDirection: 'column', gap: 20 }}>
       <div>
         <div style={{ font: '800 22px/1.1 Nunito', color: '#0A2E6B', letterSpacing: '-0.02em' }}>Change Password</div>
         <div style={{ font: '400 13px/1.4 Nunito', color: '#4B5C82', marginTop: 3 }}>Keep your account secure with a strong password</div>
@@ -177,6 +178,7 @@ export default function SecurityView() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }

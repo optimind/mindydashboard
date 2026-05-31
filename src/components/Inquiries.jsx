@@ -53,7 +53,8 @@ export default function InquiriesView() {
   })
 
   return (
-    <div style={{ flex: 1, overflow: 'auto', padding: 28, background: '#F4F7FC', display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <div style={{ flex: 1, overflow: 'auto', background: '#F4F7FC', minHeight: 0 }}>
+    <div style={{ padding: 28, display: 'flex', flexDirection: 'column', gap: 20 }}>
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
         <div style={{ flex: 1 }}>
@@ -146,6 +147,7 @@ export default function InquiriesView() {
           <div style={{ padding: '40px', textAlign: 'center', color: '#A8B3C7', font: '500 13px/1 Nunito' }}>No inquiries match your filters.</div>
         )}
       </div>
+    </div>
     </div>
   )
 }

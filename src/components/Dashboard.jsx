@@ -510,11 +510,8 @@ function KPIStrip() {
 
 export default function DashboardView() {
   return (
-    <div style={{
-      flex: 1, overflow: 'auto', padding: 28,
-      display: 'flex', flexDirection: 'column', gap: 20,
-      background: '#F4F7FC',
-    }}>
+    <div style={{ flex: 1, overflow: 'auto', background: '#F4F7FC', minHeight: 0 }}>
+    <div style={{ padding: 28, display: 'flex', flexDirection: 'column', gap: 20 }}>
       {/* Greeting */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
         <div style={{ flex: 1, minWidth: 240 }}>
@@ -555,6 +552,7 @@ export default function DashboardView() {
           <ActivityCard/>
         </div>
       </div>
+    </div>
     </div>
   )
 }

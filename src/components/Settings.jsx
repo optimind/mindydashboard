@@ -87,7 +87,8 @@ export default function SettingsView() {
   }
 
   return (
-    <div style={{ flex: 1, overflow: 'auto', padding: 28, background: '#F4F7FC', display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 820 }}>
+    <div style={{ flex: 1, overflow: 'auto', background: '#F4F7FC', minHeight: 0 }}>
+    <div style={{ padding: 28, display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 820 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
         <div style={{ flex: 1 }}>
           <div style={{ font: '800 22px/1.1 Nunito', color: '#0A2E6B', letterSpacing: '-0.02em' }}>Settings</div>
@@ -192,6 +193,7 @@ export default function SettingsView() {
           ))}
         </div>
       </div>
+    </div>
     </div>
   )
 }

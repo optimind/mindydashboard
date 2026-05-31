@@ -54,7 +54,8 @@ export default function IntegrationsView() {
   const [greeting, setGreeting] = useState("Hi! I'm Mindy, your virtual assistant. How can I help you today?")
 
   return (
-    <div style={{ flex: 1, overflow: 'auto', padding: 28, background: '#F4F7FC', display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 860 }}>
+    <div style={{ flex: 1, overflow: 'auto', background: '#F4F7FC', minHeight: 0 }}>
+    <div style={{ padding: 28, display: 'flex', flexDirection: 'column', gap: 20, maxWidth: 860 }}>
       <div>
         <div style={{ font: '800 22px/1.1 Nunito', color: '#0A2E6B', letterSpacing: '-0.02em' }}>Facebook Connect</div>
         <div style={{ font: '400 13px/1.4 Nunito', color: '#4B5C82', marginTop: 3 }}>Manage your Facebook Page and Messenger integration</div>
@@ -166,6 +167,7 @@ export default function IntegrationsView() {
           </div>
         ))}
       </IntgSection>
+    </div>
     </div>
   )
 }
