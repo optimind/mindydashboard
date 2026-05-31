@@ -1,4 +1,5 @@
 import { Icon } from './Primitives'
+import mindyAvatar from '../assets/mindy-avatar.png'
 
 export default function Sidebar({ current, onNav, collapsed, onToggle }) {
   const sections = [
@@ -42,7 +43,7 @@ export default function Sidebar({ current, onNav, collapsed, onToggle }) {
           background: '#0A2E6B', display: 'flex', alignItems: 'center', justifyContent: 'center',
           flexShrink: 0,
         }}>
-          <img src="/assets/mindy-avatar.png" width={28} height={28} style={{ borderRadius: 999 }}/>
+          <img src={mindyAvatar} width={28} height={28} style={{ borderRadius: 999 }}/>
         </div>
         {!collapsed && (
           <div style={{ display: 'flex', flexDirection: 'column' }}>
