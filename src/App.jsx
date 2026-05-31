@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Sidebar from './components/Sidebar'
 import TopBar from './components/TopBar'
 import DashboardView from './components/Dashboard'
+import ChatView from './components/Chat'
 
 export default function App() {
   const [route, setRoute] = useState('dashboard')
@@ -26,6 +27,8 @@ export default function App() {
         <TopBar title={cur.t} subtitle={cur.s} user={user} />
         {route === 'dashboard' ? (
           <DashboardView/>
+        ) : route === 'chat' ? (
+          <ChatView/>
         ) : (
           <div style={{
             flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
