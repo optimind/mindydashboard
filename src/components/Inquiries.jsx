@@ -24,7 +24,7 @@ const CAT_COLORS = {
   'Sponsorship':     { bg: '#FFEEEB', color: '#C94E3F' },
 }
 
-const STATUS_STYLES = {
+const INQ_STATUS = {
   active:    { label: 'Active',    bg: '#E0F7F5', color: '#00756F' },
   escalated: { label: 'Escalated', bg: '#FFF6E3', color: '#C98A2E' },
   resolved:  { label: 'Resolved',  bg: '#F4F7FC', color: '#4B5C82' },
@@ -110,7 +110,7 @@ export default function InquiriesView() {
         </div>
 
         {filtered.map((q, idx) => {
-          const st = STATUS_STYLES[q.status]
+          const st = INQ_STATUS[q.status]
           const ct = CAT_COLORS[q.category] || { bg: '#F4F7FC', color: '#4B5C82' }
           return (
             <div key={q.id} style={{ display: 'grid', gridTemplateColumns: '1.4fr 2fr 130px 120px 110px 80px', padding: '0 20px', borderBottom: idx < filtered.length - 1 ? '1px solid #F4F7FC' : 'none', transition: 'background 150ms', cursor: 'default' }}
