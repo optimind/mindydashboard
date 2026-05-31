@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Icon, Chip } from './Primitives'
 
-function Toggle({ on, onChange, size = 'md' }) {
+function IntgToggle({ on, onChange, size = 'md' }) {
   const w = size === 'sm' ? 36 : 44
   const h = size === 'sm' ? 20 : 24
   const dot = size === 'sm' ? 14 : 18
@@ -22,7 +22,7 @@ function Toggle({ on, onChange, size = 'md' }) {
   )
 }
 
-function Section({ title, children }) {
+function IntgSection({ title, children }) {
   return (
     <div style={{ background: '#fff', borderRadius: 16, border: '1px solid #EEF3FB', boxShadow: '0 1px 2px rgba(10,46,107,0.04)', overflow: 'hidden' }}>
       <div style={{ padding: '18px 24px', borderBottom: '1px solid #F4F7FC' }}>
@@ -35,7 +35,7 @@ function Section({ title, children }) {
   )
 }
 
-function SettingRow({ label, description, children }) {
+function IntgRow({ label, description, children }) {
   return (
     <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 24 }}>
       <div style={{ flex: 1 }}>
@@ -107,16 +107,16 @@ export default function IntegrationsView() {
       </div>
 
       {/* Messenger settings */}
-      <Section title="Messenger Settings">
-        <SettingRow label="Auto-reply" description="Let Mindy respond to all incoming Messenger messages automatically.">
-          <Toggle on={autoReply} onChange={setAutoReply}/>
-        </SettingRow>
-        <SettingRow label="Typing indicator" description="Show a typing animation while Mindy is generating a response.">
-          <Toggle on={typing} onChange={setTyping}/>
-        </SettingRow>
-        <SettingRow label="Read receipts" description="Mark messages as seen when Mindy reads them.">
-          <Toggle on={readReceipts} onChange={setReadReceipts}/>
-        </SettingRow>
+      <IntgSection title="Messenger Settings">
+        <IntgRow label="Auto-reply" description="Let Mindy respond to all incoming Messenger messages automatically.">
+          <IntgToggle on={autoReply} onChange={setAutoReply}/>
+        </IntgRow>
+        <IntgRow label="Typing indicator" description="Show a typing animation while Mindy is generating a response.">
+          <IntgToggle on={typing} onChange={setTyping}/>
+        </IntgRow>
+        <IntgRow label="Read receipts" description="Mark messages as seen when Mindy reads them.">
+          <IntgToggle on={readReceipts} onChange={setReadReceipts}/>
+        </IntgRow>
         <div>
           <div style={{ font: '700 13px/1.2 Nunito', color: '#0A2E6B', marginBottom: 8 }}>Greeting message</div>
           <div style={{ font: '400 12px/1.4 Nunito', color: '#7A89A8', marginBottom: 10 }}>Sent to users the first time they open a conversation with your page.</div>
@@ -136,10 +136,10 @@ export default function IntegrationsView() {
             </button>
           </div>
         </div>
-      </Section>
+      </IntgSection>
 
       {/* Page permissions */}
-      <Section title="Page Permissions">
+      <IntgSection title="Page Permissions">
         {[
           { label: 'pages_messaging', desc: 'Send and receive messages on behalf of your Page', granted: true },
           { label: 'pages_read_engagement', desc: 'Read content posted on the Page', granted: true },
@@ -165,7 +165,7 @@ export default function IntegrationsView() {
             }}>{p.granted ? 'Granted' : 'Missing'}</span>
           </div>
         ))}
-      </Section>
+      </IntgSection>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Icon } from './Primitives'
 
-function Toggle({ on, onChange }) {
+function SettToggle({ on, onChange }) {
   return (
     <button onClick={() => onChange(!on)} style={{
       width: 44, height: 24, borderRadius: 999, border: 0, cursor: 'pointer',
@@ -18,7 +18,7 @@ function Toggle({ on, onChange }) {
   )
 }
 
-function Field({ label, description, children }) {
+function SettField({ label, description, children }) {
   return (
     <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 24, padding: '16px 0', borderBottom: '1px solid #F4F7FC' }}>
       <div style={{ flex: 1 }}>
@@ -30,7 +30,7 @@ function Field({ label, description, children }) {
   )
 }
 
-function TextInput({ value, onChange, placeholder }) {
+function SettInput({ value, onChange, placeholder }) {
   return (
     <input value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} style={{
       width: '100%', boxSizing: 'border-box', height: 38, padding: '0 12px',
@@ -44,7 +44,7 @@ function TextInput({ value, onChange, placeholder }) {
   )
 }
 
-function SelectInput({ value, onChange, options }) {
+function SettSelect({ value, onChange, options }) {
   return (
     <select value={value} onChange={e => onChange(e.target.value)} style={{
       width: '100%', height: 38, padding: '0 12px',
@@ -56,7 +56,7 @@ function SelectInput({ value, onChange, options }) {
   )
 }
 
-function Section({ title, subtitle, children }) {
+function SettSection({ title, subtitle, children }) {
   return (
     <div style={{ background: '#fff', borderRadius: 16, border: '1px solid #EEF3FB', boxShadow: '0 1px 2px rgba(10,46,107,0.04)', overflow: 'hidden' }}>
       <div style={{ padding: '20px 24px', borderBottom: '1px solid #F4F7FC' }}>
@@ -102,72 +102,72 @@ export default function SettingsView() {
       </div>
 
       {/* General */}
-      <Section title="General" subtitle="Basic workspace information">
-        <Field label="Workspace name" description="The name of your organisation or brand.">
-          <TextInput value={workspaceName} onChange={setWorkspaceName} placeholder="Your workspace name"/>
-        </Field>
-        <Field label="Timezone" description="Used for scheduling and reporting.">
-          <SelectInput value={timezone} onChange={setTimezone} options={[
+      <SettSection title="General" subtitle="Basic workspace information">
+        <SettField label="Workspace name" description="The name of your organisation or brand.">
+          <SettInput value={workspaceName} onChange={setWorkspaceName} placeholder="Your workspace name"/>
+        </SettField>
+        <SettField label="Timezone" description="Used for scheduling and reporting.">
+          <SettSelect value={timezone} onChange={setTimezone} options={[
             { value: 'Asia/Manila', label: 'Asia/Manila (GMT+8)' },
             { value: 'Asia/Singapore', label: 'Asia/Singapore (GMT+8)' },
             { value: 'America/New_York', label: 'America/New_York (GMT-5)' },
             { value: 'UTC', label: 'UTC' },
           ]}/>
-        </Field>
-        <Field label="Language" description="Default language for the chatbot interface.">
-          <SelectInput value={language} onChange={setLanguage} options={[
+        </SettField>
+        <SettField label="Language" description="Default language for the chatbot interface.">
+          <SettSelect value={language} onChange={setLanguage} options={[
             { value: 'en', label: 'English' },
             { value: 'fil', label: 'Filipino' },
             { value: 'es', label: 'Spanish' },
           ]}/>
-        </Field>
-      </Section>
+        </SettField>
+      </SettSection>
 
       {/* Chatbot behavior */}
-      <Section title="Chatbot Behavior" subtitle="Control how Mindy interacts with customers">
-        <Field label="Chatbot name" description="The display name shown to customers in Messenger.">
-          <TextInput value={chatbotName} onChange={setChatbotName} placeholder="Chatbot name"/>
-        </Field>
-        <Field label="Personality" description="Tone and style of Mindy's responses.">
-          <SelectInput value={personality} onChange={setPersonality} options={[
+      <SettSection title="Chatbot Behavior" subtitle="Control how Mindy interacts with customers">
+        <SettField label="Chatbot name" description="The display name shown to customers in Messenger.">
+          <SettInput value={chatbotName} onChange={setChatbotName} placeholder="Chatbot name"/>
+        </SettField>
+        <SettField label="Personality" description="Tone and style of Mindy's responses.">
+          <SettSelect value={personality} onChange={setPersonality} options={[
             { value: 'friendly', label: 'Friendly & casual' },
             { value: 'professional', label: 'Professional & formal' },
             { value: 'concise', label: 'Concise & direct' },
           ]}/>
-        </Field>
-        <Field label="Auto-reply" description="Automatically respond to all incoming messages.">
+        </SettField>
+        <SettField label="Auto-reply" description="Automatically respond to all incoming messages.">
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Toggle on={autoReply} onChange={setAutoReply}/>
+            <SettToggle on={autoReply} onChange={setAutoReply}/>
           </div>
-        </Field>
-        <Field label="Response delay" description="Add a brief pause before Mindy replies to feel more human.">
-          <SelectInput value={delay} onChange={setDelay} options={[
+        </SettField>
+        <SettField label="Response delay" description="Add a brief pause before Mindy replies to feel more human.">
+          <SettSelect value={delay} onChange={setDelay} options={[
             { value: 'instant', label: 'Instant' },
             { value: '1s', label: '~1 second' },
             { value: '2s', label: '~2 seconds' },
             { value: '3s', label: '~3 seconds' },
           ]}/>
-        </Field>
-      </Section>
+        </SettField>
+      </SettSection>
 
       {/* Notifications */}
-      <Section title="Notifications" subtitle="Choose when to receive alerts">
-        <Field label="Email alerts" description="Receive an email for important events like escalations.">
+      <SettSection title="Notifications" subtitle="Choose when to receive alerts">
+        <SettField label="Email alerts" description="Receive an email for important events like escalations.">
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Toggle on={emailAlerts} onChange={setEmailAlerts}/>
+            <SettToggle on={emailAlerts} onChange={setEmailAlerts}/>
           </div>
-        </Field>
-        <Field label="Escalation alerts" description="Notify you immediately when a conversation is escalated.">
+        </SettField>
+        <SettField label="Escalation alerts" description="Notify you immediately when a conversation is escalated.">
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Toggle on={escAlerts} onChange={setEscAlerts}/>
+            <SettToggle on={escAlerts} onChange={setEscAlerts}/>
           </div>
-        </Field>
-        <Field label="Weekly performance report" description="Summary of conversations, resolution rate, and trends.">
+        </SettField>
+        <SettField label="Weekly performance report" description="Summary of conversations, resolution rate, and trends.">
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <Toggle on={weeklyReport} onChange={setWeeklyReport}/>
+            <SettToggle on={weeklyReport} onChange={setWeeklyReport}/>
           </div>
-        </Field>
-      </Section>
+        </SettField>
+      </SettSection>
 
       {/* Danger zone */}
       <div style={{ background: '#fff', borderRadius: 16, border: '1px solid #FFEEEB', boxShadow: '0 1px 2px rgba(10,46,107,0.04)', overflow: 'hidden' }}>
