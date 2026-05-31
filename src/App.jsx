@@ -3,6 +3,11 @@ import Sidebar from './components/Sidebar'
 import TopBar from './components/TopBar'
 import DashboardView from './components/Dashboard'
 import ChatView from './components/Chat'
+import ProductsView from './components/Products'
+import InquiriesView from './components/Inquiries'
+import IntegrationsView from './components/Integrations'
+import SecurityView from './components/Security'
+import SettingsView from './components/Settings'
 
 export default function App() {
   const [route, setRoute] = useState('dashboard')
@@ -20,25 +25,22 @@ export default function App() {
   }
   const cur = titles[route] || titles.dashboard
 
+  const views = {
+    dashboard:    <DashboardView/>,
+    chat:         <ChatView/>,
+    products:     <ProductsView/>,
+    inquiries:    <InquiriesView/>,
+    integrations: <IntegrationsView/>,
+    security:     <SecurityView/>,
+    settings:     <SettingsView/>,
+  }
+
   return (
     <>
       <Sidebar current={route} onNav={setRoute} collapsed={collapsed} onToggle={() => setCollapsed(c => !c)} />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
         <TopBar title={cur.t} subtitle={cur.s} user={user} />
-        {route === 'dashboard' ? (
-          <DashboardView/>
-        ) : route === 'chat' ? (
-          <ChatView/>
-        ) : (
-          <div style={{
-            flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
-            flexDirection: 'column', gap: 12, color: '#4B5C82', padding: 40,
-          }}>
-            <img src="/assets/mindy-avatar.png" width={120} style={{ borderRadius: 999, opacity: 0.85 }}/>
-            <div style={{ font: '800 22px/1.2 Nunito', color: '#0A2E6B' }}>{cur.t}</div>
-            <div style={{ font: '400 14px/1.4 Nunito' }}>This view is in the kit — not wired up in this demo.</div>
-          </div>
-        )}
+        {views[route] || views.dashboard}
       </div>
     </>
   )
